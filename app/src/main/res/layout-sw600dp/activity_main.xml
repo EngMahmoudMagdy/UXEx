@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.magdy.uiex.MainActivity"
+    android:background="#343d46"
+    >
+    <!-- android:background="#343d46"-->
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp">
+
+
+
+        <ImageView
+            android:id="@+id/triup"
+            android:gravity="center"
+            android:background="@drawable/trangleup"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="450dp"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:layout_height="450dp" />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/triupclick"
+            android:gravity="center"
+            android:src="@drawable/iconabout"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="145dp"
+
+            />
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/tridown"
+            android:background="@drawable/trangledown"
+            android:layout_marginTop="375dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            />
+        <ViewFlipper
+            android:id="@+id/viewFlipper"
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:addStatesFromChildren="true"
+            android:scaleType="center"
+            android:layout_marginTop="480dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="2dp"
+            >
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="190dp"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:id="@+id/tridownclick"
+                android:clickable="true"
+
+                />
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="190dp"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:rotationY="180"
+                android:id="@+id/tridownclick1"
+
+                android:src="@drawable/iconmessage"
+                android:clickable="true"
+
+                />
+
+        </ViewFlipper>
+
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftup"
+            android:background="@drawable/trangleleftup"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:layout_marginRight="175dp"
+            />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftupcilck"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="250dp"
+            android:layout_marginRight="148dp"
+
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="250dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftupcilck2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:layout_marginRight="188dp"
+
+            />
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftdown"
+            android:background="@drawable/trangleleftdown"
+            android:layout_marginTop="335dp"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginRight="172dp"
+
+
+            />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftdownclick"
+            android:layout_marginTop="415dp"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginRight="156dp"
+
+
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="225dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trileftdownclick2"
+            android:layout_marginTop="415dp"
+            android:layout_gravity="center_horizontal"
+
+
+            android:layout_marginRight="186dp"
+
+
+            />
+
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightup"
+            android:background="@drawable/tranglerightup"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="42dp"
+            android:layout_marginLeft="187dp"
+            />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightupclick"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="144dp"
+            />
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="225dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightupclick2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="165dp"
+            android:layout_marginLeft="175dp"
+            />
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightdown"
+            android:background="@drawable/tranglerightdown"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="335dp"
+            android:layout_marginLeft="182dp"
+
+            />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightdownclick"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="410dp"
+            android:layout_marginLeft="150dp"
+
+
+
+            />
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="225dp"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:id="@+id/trirightdownclick2"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="410dp"
+            android:layout_marginLeft="170dp"
+
+
+
+            />
+
+        <ImageView
+            android:layout_width="215dp"
+            android:layout_height="205dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/circleid"
+            android:src="@drawable/defaultcircle"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="309dp"
+            android:layout_marginLeft="2dp"
+
+            />
+
+
+    </FrameLayout>
+
+
+    <include
+        layout="@layout/toolbar" >
+    </include>
+
+
+</RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#464646"
+        app:menu="@menu/drawer_view"
+        app:itemIconTint="@color/drawer_item"
+        app:itemTextColor="@color/drawer_item"
+        />
+
+</android.support.v4.widget.DrawerLayout>

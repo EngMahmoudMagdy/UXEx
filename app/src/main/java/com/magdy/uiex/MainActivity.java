@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout shadbar ;
     List <ImageView> triangle;
      List <ImageView> clickView  ;
+
+    LinearLayout leftdownclickview ,rightdownclickview ;
+    // linear layout for clicks
+
+    TextView leftDownText , leftDownNumber , rightDownText, rightDownNumber ;
+    // texts and numbers for every textview in the layout
+
     ImageView circle;
     ViewFlipper viewFlipper ;
     int triIndex = 0 ;
@@ -71,9 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             R.id.triupclick,
             R.id.tridownclick,
             R.id.trileftupcilck,
-            R.id.trileftdownclick,
             R.id.trirightupclick,
-            R.id.trirightdownclick,
             R.id.trileftupcilck2,
             R.id.trileftdownclick2,
             R.id.trirightupclick2,
@@ -140,20 +146,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+
+
+        //here is to choose the layout for small screens
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int width = displaymetrics.widthPixels;
+        if (width > 480)
+      setContentView(R.layout.activity_main); // for new and ordinary mobiles above 480p in width
+        else
+            setContentView(R.layout.activity_mainv2);//for small mobiles
+
 
 
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar); // for toolbar
+
+
 
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        //drawerToggle = setupDrawerToggle();
+        drawerToggle = setupDrawerToggle();
 
         View headerLayout = nvDrawer.inflateHeaderView(R.layout.nav_header);
 
@@ -162,11 +180,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView imageViewheader =(ImageView) headerLayout.findViewById(R.id.imageheader);
         imageViewheader.setImageDrawable(roundedImage);
 
-// We can now look up items within the header if needed
+        // We can now look up items within the header if needed
 
 
         // Tie DrawerLayout events to the ActionBarToggle
-       // mDrawer.addDrawerListener(drawerToggle);
+        mDrawer.addDrawerListener(drawerToggle);
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
@@ -177,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         circle = (ImageView)findViewById(R.id.circleid);
         circle.setImageResource(circleDrawable[6]);
         triangle = new ArrayList< ImageView>();
-        for (int i =0; i<triViewsId.length; i ++) {
+        for (int i =0; i<triViewsId.length-2; i ++) {
 
             ImageView temp =(ImageView) findViewById(clickViewsId[i]);
             temp.setOnClickListener(this);
@@ -186,11 +204,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ImageView temp2 =(ImageView) findViewById(triViewsId[i]);
             triangle.add(temp2);
         }
-        for (int i =6; i<10; i ++) {
+
+        ImageView temp2 =(ImageView) findViewById(triViewsId[4]);
+        triangle.add(temp2);
+
+        temp2 =(ImageView) findViewById(triViewsId[5]);
+        triangle.add(temp2);
+
+        for (int i =4; i<8; i ++) {
             ImageView temp = (ImageView) findViewById(clickViewsId[i]);
             temp.setOnClickListener(this);
             clickView.add(temp);
         }
+
+        leftdownclickview =(LinearLayout) findViewById(R.id.trileftdownclick); // for texts
+        rightdownclickview =(LinearLayout) findViewById(R.id.trirightdownclick); // left and right
+
+
+        //the text initialization
+        //left texts
+        leftDownText = (TextView) findViewById(R.id.textleftdown);
+        leftDownNumber = (TextView) findViewById(R.id.textnumberleftdown); // numbers
+
+        //right texts
+        rightDownText = (TextView) findViewById(R.id.textrightdown);
+        rightDownNumber = (TextView) findViewById(R.id.textnumberrightdown); //numbers
 
 
         zoomAnimation = AnimationUtils.loadAnimation(this, R.anim.scale);
@@ -315,7 +353,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             AnimationFactory.flipTransition(viewAnimator, AnimationFactory.FlipDirection.LEFT_RIGHT);
 
         }
-        else if (v == clickView.get(2) || v==clickView.get(6))
+        else if (v == clickView.get(2) || v==clickView.get(4))
         {
             shadbar.setBackgroundResource(shadebarDrawable[2]);
             triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
@@ -329,21 +367,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
         }
 
-        else if (v == clickView.get(3)|| v==clickView.get(7))
+        else if (v == leftdownclickview|| v==clickView.get(5))
         {
             shadbar.setBackgroundResource(shadebarDrawable[3]);
             triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
             triangle.get(3).setBackgroundResource(trishadedDrawable[3]);
             triIndex = 3;
             circle.setImageResource(circleDrawable[3]);
-            Intent i = new Intent(this,DetailsActivity.class);
+            /*Intent i = new Intent(this,DetailsActivity.class);
             i.putExtra("icon",iconDrawable[3]);
-            startActivity(i);
+            startActivity(i);*/
 
 //            triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
         }
         else
-        if (v == clickView.get(4)|| v==clickView.get(8))
+        if (v == clickView.get(3)|| v==clickView.get(6))
         {
             shadbar.setBackgroundResource(shadebarDrawable[4]);
             triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
@@ -356,16 +394,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //            triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
         }
-        else if (v == clickView.get(5)|| v==clickView.get(9))
+        else if (v ==rightdownclickview || v==clickView.get(7))
         {
             shadbar.setBackgroundResource(shadebarDrawable[5]);
             triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
             triangle.get(5).setBackgroundResource(trishadedDrawable[5]);
             triIndex = 5 ;
             circle.setImageResource(circleDrawable[5]);
-            Intent i = new Intent(this,DetailsActivity.class);
+          /*  Intent i = new Intent(this,DetailsActivity.class);
             i.putExtra("icon",iconDrawable[5]);
-            startActivity(i);
+            startActivity(i);*/
 
 //            triangle.get(triIndex).setBackgroundResource(triDrawable[triIndex]);
         }
